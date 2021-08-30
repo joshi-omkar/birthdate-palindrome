@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+.App {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+}
+:root {
+  --primary-color: #c5c5c5;
+  --secondary-color: #dedede;
+}
+
+body {
+  background-color: #222831;
+}
+
+h1 {
+  color: var(--primary-color);
+}
+
+input {
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
+button {
+  margin: 2rem auto;
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: #2a0c4a;
+  color: #eeeeee;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #00adb5;
+}
+.container {
+  padding: 2rem;
+  border-radius: 0.3rem;
+  margin: 1rem auto;
+  width: 80%;
+  box-shadow: #00adb5;
+}
+
+p.container {
+  padding: 0.5rem;
+  font-size: 20px;
+}
+p {
+  color: #eeeeee;
+}
+
+h3 {
+  color: #eeeeee;
+}
