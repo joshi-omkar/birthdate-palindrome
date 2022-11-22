@@ -170,11 +170,47 @@ function getPreviousPalindromeDate(date) {
   }
 }
 
+function outputAnswer(date, checkPalindrome) {
+  if (!checkPalindrome) {
+    const [count1, nextDate] = getNextPalindromeDate(date);
+    const [count2, prevDate] = getPreviousPalindromeDate(date);
+
+    if (count1 > count2) {
+      output.innerText =
+        "The nearest palindrome date is " +
+        prevDate.day +
+        "-" +
+        prevDate.month +
+        "-" +
+        prevDate.year +
+        ", you missed by " +
+        count2 +
+        " days.";
+    } else {
+      output.innerText =
+        "The nearest palindrome date is " +
+        nextDate.day +
+        "-" +
+        nextDate.month +
+        "-" +
+        nextDate.year +
+        ", you missed by " +
+        count1 +
+        " days.";
+    }
+  } else {
+    output.innerText = "Congrats!! Your Birthday is Palindrome";
+  }
+}
+
 var birthdayInput = document.querySelector("#birthdayInput");
 
 var checkBtn = document.querySelector("#checkBtn");
 
 var output = document.querySelector("#output");
+
+var loader = document.getElementById("#loader");
+loader.style.display = "none";
 
 function palindromeClickHandler(input) {
   var birthday = birthdayInput.value;
@@ -203,36 +239,11 @@ function palindromeClickHandler(input) {
       }
     }
 
-    if (!checkPalindrome) {
-      const [count1, nextDate] = getNextPalindromeDate(date);
-      const [count2, prevDate] = getPreviousPalindromeDate(date);
-
-      if (count1 > count2) {
-        output.innerText =
-          "The nearest palindrome date is " +
-          prevDate.day +
-          "-" +
-          prevDate.month +
-          "-" +
-          prevDate.year +
-          ", you missed by " +
-          count2 +
-          " days.";
-      } else {
-        output.innerText =
-          "The nearest palindrome date is " +
-          nextDate.day +
-          "-" +
-          nextDate.month +
-          "-" +
-          nextDate.year +
-          ", you missed by " +
-          count1 +
-          " days.";
-      }
-    } else {
-      output.innerText = "Congrats!! Your Birthday is Palindrome";
-    }
+    loader.style.display = "block";
+    setTimeout(() => {
+      loader.style.display = "none";
+      outputAnswer(date, checkPalindrome);
+    }, 1000);
   }
 }
 
